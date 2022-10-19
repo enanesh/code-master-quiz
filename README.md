@@ -1,1 +1,1 @@
-# code-quiz-JVS
+# code-quiz-js

@@ -1,6 +1,7 @@
+//DOM HOOKS 
 
 
-var time = document.getElementById("grid-item2");
+//var time = document.getElementById("grid-item2");
 
 
 
@@ -13,7 +14,7 @@ var time = document.getElementById("grid-item2");
 
 function setTime() {
     var timerInterval = setInterval(function () {
-        var time = document.getElementById("grid-item2");
+       // var time = document.getElementById("grid-item2");
         time.textContent = secondsLeft;
 
 

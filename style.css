@@ -1,45 +1,48 @@
+* {
+    box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
 
 
 
-header{
+body{
+padding: 0;
+margin: 0;
+display: flex;
+flex-direction: column;
+width: 100%;
+height: 100vh;
+align-items: center;
+background-color: pink;
+}
+
+/*Header */
+
+header {
+
+    width: 80%;
+    padding: 60px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+   
+
+
+}
+
+/*box of QUIZ reminder text is not swrikning when box is smaller */ 
+
+.quiz{
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    max-width: 75%;
+    padding: 20px;
     text-align: center;
-    padding-top: 40px;
-
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px 2px;
 }
 
-.grid-container {
 
-    display: grid;
-    column-gap: 50px;
-    grid-template-columns: auto auto;
-    padding: 10px;
-    padding-top: 90px;
-
-}
-
-.grid-item1 {
-    background-image: linear-gradient(45deg, rgb(246, 188, 55), beige);
-    border: 4px solid #fff;
-    padding: 40px;
-    font-size: 30px;
-    text-align: center;
-    border-radius: 7px;
-}
-
-.grid-item2 {
-    background-image: linear-gradient(45deg, rgb(246, 188, 55), beige);
-    border: 4px solid #fff;
-    font-size: 30px;
-    text-align: center;
-    border-radius: 7px;
-    
-}
-
-.timer {
-    position: absolute;
-    margin-top: 90px;
-    text-align: right;
-    background-color: blue;
-    border-radius: 7px;
-    color: white;
-}

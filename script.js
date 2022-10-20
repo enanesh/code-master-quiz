@@ -1,11 +1,55 @@
 //DOM HOOKS 
+var timerEl = document.getElementById("timer");
+var timerButtonEl = document.getElementById("startTimer");
+var questionsEl = document.getElementById("questions");
+var answersEL = document.getElementById("answers");
+var scoresEl = document.getElementById("score");
 
-var time = document.getElementById("timer");//has to keep track of this
-var scoreBoard = 0;// Have to keep track of this
-var questions = 0;//has to be an  objet 
-var answers = 0;// has to be random sort choice.Validate 
+/*EVENT LISTENER START BUTTON*/
 
-//add event listener to startButton
+
+timerButtonEl.addEventListener("click", countdown);
+
+
+
+/* TIMER FUNCTION*/
+
+
+function countdown() {
+    var timeLeft = 10;
+
+    // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+    var timeInterval = setInterval(function () {
+        // As long as the `timeLeft` is greater than 1
+        if (timeLeft > 1) {
+            // Set the `textContent` of `timerEl` to show the remaining seconds
+            timerEl.textContent = timeLeft + ' seconds remaining';
+            // Decrement `timeLeft` by 1
+            timeLeft--;
+        } else if (timeLeft === 1) {
+            // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
+            timerEl.textContent = timeLeft + ' second remaining';
+            timeLeft--;
+        } else {
+            // Once `timeLeft` gets to 0, set `timerEl` to an empty string
+            timerEl.textContent = '';
+            // Use `clearInterval()` to stop the timer
+            clearInterval(timeInterval);
+            // Call the `displayMessage()` function
+           
+        }
+    }, 1000);
+}
+
+
+    
+
+
+
+
+
+
+
 //Present a question
 // if answerwrong  (-) time,next question
 //if answer is right save answer ,next question
@@ -22,30 +66,3 @@ var answers = 0;// has to be random sort choice.Validate
 
 
 
-
-
-
-
-// Timmer 
-
-
-function setTime() {
-    var timerInterval = setInterval(function () {
-       // var time = document.getElementById("grid-item2");
-        time.textContent = secondsLeft;
-
-
-        if (secondsLeft === 0) {
-            losses = losses + 1;
-            perdedor.textContent = "Losses: " + losses;
-
-            clearInterval(timerInterval);
-
-        }
-        secondsLeft--;
-
-
-
-    }, 1000);
-
-}

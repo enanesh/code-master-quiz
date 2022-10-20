@@ -15,7 +15,7 @@ timerButtonEl.addEventListener("click", countdown);
 /* TIMER FUNCTION*/
 
 
-function countdown() {
+function countdown(e) {
     var timeLeft = 10;
 
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
@@ -40,6 +40,8 @@ function countdown() {
         }
     }, 1000);
 }
+
+
 
 
     

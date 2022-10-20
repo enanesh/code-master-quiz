@@ -13,7 +13,7 @@ flex-direction: column;
 width: 100%;
 height: 100vh;
 align-items: center;
-background-color: pink;
+background-color: beige;
 }
 
 /*Header */
@@ -30,6 +30,25 @@ header {
 
 }
 
+/*Button format*/
+
+.buttonStart{
+    
+    color: white;
+    font-size: large;
+    border: 3px solid purple;
+    border-radius: 5px;
+    background-color: purple;
+    padding: 20px 26px;
+    margin: 15px;
+   
+}
+
+.buttonStart:hover{
+    background-color: blueviolet;
+}
+
+
 /*box of QUIZ reminder text is not swrikning when box is smaller */ 
 
 .quiz{
@@ -43,5 +62,40 @@ header {
     border-radius: 10px;
     box-shadow: 0 3px 10px 2px;
 }
+
+
+
+
+/* TO UPDATE DE BOXES DISPLAY */
+.hide {
+    display: none;
+}
+
+
+/* ANSWER FORMAT*/
+
+li{
+    padding:5px;
+    text-align: left;
+}
+
+/*ANSWER BUTTONS*/
+
+.buttonAns{
+
+    color: white;
+    font-size: large;
+    border: 3px solid purple;
+    border-radius: 5px;
+    background-color: purple;
+    padding: 10px;
+
+
+}
+
+.buttonAns:hover{
+    background-color: pink;
+}
+
 
 

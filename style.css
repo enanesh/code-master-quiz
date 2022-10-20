@@ -28,17 +28,16 @@ header {
     font-weight: bold;
    
 
-
 }
 
 /*box of QUIZ reminder text is not swrikning when box is smaller */ 
 
 .quiz{
+    width: 500px;
+    padding: 20px;
     justify-content: center;
     align-items: center;
-    width: 500px;
     max-width: 75%;
-    padding: 20px;
     text-align: center;
     background-color: white;
     border-radius: 10px;

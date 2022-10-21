@@ -1,7 +1,7 @@
 //DOM HOOKS 
 var timerEl = document.getElementById("timer");
 var timerButtonEl = document.getElementById("startTimer");
-var questionsEl = document.getElementById("questions");
+var questionEl = document.getElementById("question");
 var answersEL = document.getElementById("answers");
 var scoresEl = document.getElementById("score");
 
@@ -36,15 +36,54 @@ function countdown(e) {
             // Use `clearInterval()` to stop the timer
             clearInterval(timeInterval);
             // Call the `displayMessage()` function
-           
+
         }
     }, 1000);
 }
 
+// QUESTIONS DICTIONARY 
 
 
 
-    
+var questionLibrary = [
+    {//it hasa to have brakets so it identifies as an elemnt on the array 
+        questionsId: " JavaScript is the programming language of the _____.",
+        answerList: [
+            { answer: 'Web', correct: true },
+            { answer: 'Mobile', correct: false },
+            { answer: 'Desktop', correct: false },
+            { answer: 'Server', correct: false },
+        ]
+
+    },
+    {
+        questionsId: '  Which type of JavaScript language is _____?',
+        answerList: [
+            { answer: 'Object-oriented', correct: true },
+            { answer: 'Functional programming', correct: false },
+            { answer: 'Object-based', correct: false },
+            { answer: 'Procedural', correct: false },
+        ]
+    },
+
+    {
+        questionsId: 'In which HTML element, we put the JavaScript code?',
+        answerList: [
+            { answer: '<script>...</script>', correct: true },
+            { answer: '<javascript>...</javascript>', correct: false },
+            { answer: '<js>...</js>', correct: false },
+            { answer: '<css>...</css>', correct: false },
+        ]
+    },
+
+];
+
+
+// SHUFFLE ARRAY TO GENERATE RANDOM QUESTION
+
+
+
+
 
 
 

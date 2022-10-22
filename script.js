@@ -4,11 +4,10 @@ var timerButtonEl = document.getElementById("startTimer");
 var questionEl = document.getElementById("question");
 var answersEL = document.getElementById("answers");
 var scoresEl = document.getElementById("score");
- var answer1El = document.getElementById("answer1");
+var answer1El = document.getElementById("answer1");
 var answer2El = document.getElementById("answer2");
 var answer3El = document.getElementById("answer3");
 var answer4El = document.getElementById("answer4");
-var answerEl = document.getElementById("answer");
 var positionQuestion = 0;
 var positionAnswer = 0;
 var timeLeft = 10000;
@@ -23,8 +22,6 @@ timerButtonEl.addEventListener("click", countdown);
 
 
 /* TIMER FUNCTION*/
-
-
 function countdown(e) {
 
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
@@ -57,59 +54,84 @@ function showquestion(position) {
     questionEl.textContent = questionLibrary[position].questionsId;
 
     var respuestas = questionLibrary[position].answerList;
-    shuffle(respuestas)
+    shuffle(respuestas);
 
-
-
-
+    var rigthAnswer = questionLibrary[position].answerList.correct;
 
     
+
+    console.log(rigthAnswer)
+
+    for (var i = 1; i <= respuestas.length; i++){
+        var answersEL = document.getElementById("answer" + i.toString());
+        
+        var answerbutton = document.createElement('button');
+        answerbutton.textContent = respuestas[i-1].answer;
+        answersEL.appendChild(answerbutton); 
+
+        
+        
+
+    }
+
     //BUTTON ANSWER 1
 
-    answerbutton1 = document.createElement('button');
-    answerbutton1.textContent = (respuestas[0].answer);
-    answer1El.appendChild(answerbutton1);  
-    
+     
+   
+
+
+   
     
         
-    //BUTTON ANSWER 2
+    // //BUTTON ANSWER 2
 
 
-    answerbutton2 = document.createElement('button');
-    answerbutton2.textContent = (respuestas[1].answer);
-    answer2El.appendChild(answerbutton2);
-
-    
-
-
-    //BUTTON ANSWER 3
-
-    answerbutton3 = document.createElement('button');
-    answerbutton3.textContent = (respuestas[2].answer);
-    answer3El.appendChild(answerbutton3);
+    // answerbutton2 = document.createElement('button');
+    // answerbutton2.textContent = respuestas[1].answer;
+    // answer2El.appendChild(answerbutton2);
 
     
 
+    
+    // //BUTTON ANSWER 3
 
-    //BUTTON ANSWER 4
+    // answerbutton3 = document.createElement('button');
+    // answerbutton3.textContent = respuestas[2].answer;
+    // answer3El.appendChild(answerbutton3);
 
-    answerbutton4 = document.createElement('button');
-    answerbutton4.textContent = (respuestas[3].answer);
-    answer4El.appendChild(answerbutton4);
+   
 
-    // ANSWER BUTTONS LISTENERS 
+    
+    // //BUTTON ANSWER 4
 
-    answer1El.addEventListener("click", lose);
-    answer2El.addEventListener("click", lose);
-    answer3El.addEventListener("click", lose);
-    answer4El.addEventListener("click", lose);
+    // answerbutton4 = document.createElement('button');
+    // answerbutton4.textContent = respuestas[3].answer;
+    // answer4El.appendChild(answerbutton4);
+
+
+    
+
+    // // ANSWER BUTTONS LISTENERS 
+
+    // answer1El.addEventListener("click", lose);
+    // answer2El.addEventListener("click", lose);
+    // answer3El.addEventListener("click", lose);
+    // answer4El.addEventListener("click", lose);
+
+    // //BUTTON STYLE 
+    // answerbutton1.classList.add("buttonAns");
+    // answerbutton2.classList.add("buttonAns");
+    // answerbutton3.classList.add("buttonAns");
+    // answerbutton4.classList.add("buttonAns");
+
+
 
 }
 
 
 
 
-
+  
 
 
    
@@ -121,10 +143,8 @@ function lose() {
 
 // QUESTIONS DICTIONARY 
 
-
-
 var questionLibrary = [
-    {//it hasa to have brakets so it identifies as an elemnt on the array 
+    {//it has  to have brakets so it identifies as an elemnt on the array 
         questionsId: " JavaScript is the programming language of the _____.",
         answerList: [
             { answer: 'Web', correct: true },
@@ -157,7 +177,10 @@ var questionLibrary = [
 ];
 
 
-// SHUFFLE ARRAY TO GENERATE RANDOM QUESTION (got this part from stack-overflow)
+
+
+// SHUFFLE ARRAY TO GENERATE RANDOM QUESTIONS AND RANDOM ANSWERS
+//(got this part from stack - overflow)
 
 
 function shuffle(array) {
@@ -194,53 +217,6 @@ shuffle(questionLibrary);
 //asignar mi pregunta
 //crear bottones para la respuesta
 //tratar de iterar las respuestas 
-
-
-
-
-
-// var questionOrder = '';
-    
-
-// for (i = 0; i < questionLibrary.length; i++){
-//     questionOrder = questionLibrary[i].questionsId + "<br>";
-
-//     console.log(questionOrder)
-
-// }
-  
-
-
-//Creates <h2>question<h2>
-
-// questionEl.textContent = JSON.stringify(questionLibrary[0].questionsId);
-
-
-
-/// Creates the answer buttons FIND A WAY TO MAKE THIS AUTOMATIC GENERATED 
-
-
-//answerbutton1 = document.createElement('button');
-//answerbutton1.textContent = JSON.stringify(questionLibrary[0].answerList[0].answer);
-//answer1El.appendChild(answerbutton1);
-
-// answerbutton2 = document.createElement('button');
-// answerbutton2.textContent = JSON.stringify(questionLibrary[0].answerList[1].answer);
-// answer2El.appendChild(answerbutton2);
-
-
-// answerbutton3 = document.createElement('button');
-// answerbutton3.textContent = JSON.stringify(questionLibrary[0].answerList[2].answer);
-// answer3El.appendChild(answerbutton3);
-
-
-
-
-
-
-
-
-
 
 
 

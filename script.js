@@ -4,12 +4,13 @@ var timerButtonEl = document.getElementById("startTimer");
 var questionEl = document.getElementById("question");
 var answersEL = document.getElementById("answers");
 var scoresEl = document.getElementById("score");
-var answer1El = document.getElementById("answer1");
-var answer2El = document.getElementById("answer2");
-var answer3El = document.getElementById("answer3");
-var answer4El = document.getElementById("answer4");
+// var answer1El = document.getElementById("answer1");
+// var answer2El = document.getElementById("answer2");
+// var answer3El = document.getElementById("answer3");
+// var answer4El = document.getElementById("answer4");
 var answerEl = document.getElementById("answer");
-
+var positionQuestion = 0;
+var timeLeft = 10000;
 
 
 /*EVENT LISTENER START BUTTON*/
@@ -23,7 +24,6 @@ timerButtonEl.addEventListener("click", countdown);
 
 
 function countdown(e) {
-    var timeLeft = 10;
 
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
     var timeInterval = setInterval(function () {
@@ -46,7 +46,27 @@ function countdown(e) {
 
         }
     }, 1000);
+
+    showquestion(positionQuestion);
 }
+
+function showquestion(position) {
+    questionEl.textContent = questionLibrary[position].questionsId;
+
+
+
+
+}
+
+function win(){
+    positionQuestion++;
+    showquestion(positionQuestion);
+}
+
+function lose() {
+    timeLeft = timeLeft -1000;
+}
+
 
 // QUESTIONS DICTIONARY 
 
@@ -113,6 +133,11 @@ shuffle(questionLibrary);
 
 
 
+
+
+
+
+
 console.log(questionLibrary);
 
 //asignar mi pregunta
@@ -123,27 +148,39 @@ console.log(questionLibrary);
 console.log(questionLibrary[0].questionsId);
 
 
+// var questionOrder = '';
+    
+
+// for (i = 0; i < questionLibrary.length; i++){
+//     questionOrder = questionLibrary[i].questionsId + "<br>";
+
+//     console.log(questionOrder)
+
+// }
+  
+
+
 //Creates <h2>question<h2>
 
-questionEl.textContent = JSON.stringify(questionLibrary[0].questionsId);
+// questionEl.textContent = JSON.stringify(questionLibrary[0].questionsId);
 
 
 
 /// Creates the answer buttons FIND A WAY TO MAKE THIS AUTOMATIC GENERATED 
 
 
-answerbutton1 = document.createElement('button');
-answerbutton1.textContent = JSON.stringify(questionLibrary[0].answerList[0].answer);
-answer1El.appendChild(answerbutton1);
+//answerbutton1 = document.createElement('button');
+//answerbutton1.textContent = JSON.stringify(questionLibrary[0].answerList[0].answer);
+//answer1El.appendChild(answerbutton1);
 
-answerbutton2 = document.createElement('button');
-answerbutton2.textContent = JSON.stringify(questionLibrary[0].answerList[1].answer);
-answer2El.appendChild(answerbutton2);
+// answerbutton2 = document.createElement('button');
+// answerbutton2.textContent = JSON.stringify(questionLibrary[0].answerList[1].answer);
+// answer2El.appendChild(answerbutton2);
 
 
-answerbutton3 = document.createElement('button');
-answerbutton3.textContent = JSON.stringify(questionLibrary[0].answerList[2].answer);
-answer3El.appendChild(answerbutton3);
+// answerbutton3 = document.createElement('button');
+// answerbutton3.textContent = JSON.stringify(questionLibrary[0].answerList[2].answer);
+// answer3El.appendChild(answerbutton3);
 
 
 

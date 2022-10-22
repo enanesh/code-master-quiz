@@ -2,12 +2,7 @@
 var timerEl = document.getElementById("timer");
 var timerButtonEl = document.getElementById("startTimer");
 var questionEl = document.getElementById("question");
-var answersEL = document.getElementById("answers");
 var scoresEl = document.getElementById("score");
-var answer1El = document.getElementById("answer1");
-var answer2El = document.getElementById("answer2");
-var answer3El = document.getElementById("answer3");
-var answer4El = document.getElementById("answer4");
 var positionQuestion = 0;
 var positionAnswer = 0;
 var timeLeft = 10000;
@@ -56,89 +51,64 @@ function showquestion(position) {
     var respuestas = questionLibrary[position].answerList;
     shuffle(respuestas);
 
-    var rigthAnswer = questionLibrary[position].answerList.correct;
-
-    
-
-    console.log(rigthAnswer)
+   
 
     for (var i = 1; i <= respuestas.length; i++){
         var answersEL = document.getElementById("answer" + i.toString());
         
-        var answerbutton = document.createElement('button');
-        answerbutton.textContent = respuestas[i-1].answer;
-        answersEL.appendChild(answerbutton); 
-
+        var answerButton = document.createElement('button');
+        answerButton.textContent = respuestas[i - 1].answer;
         
+
+        answersEL.innerHTML = ''; // got this part from stack-overflow
+
+        answersEL.appendChild(answerButton); 
+
+        answerButton.classList.add("buttonAns");
+
+
+    
+        var rightAnswer = respuestas[i - 1].correct;
+        
+        if (rightAnswer === true) {
+
+        answersEL.addEventListener("click", win);
+
+        } else {
+
+        answersEL.addEventListener("click", loose);
+        }
+    
+    }
+
+}
+
+ 
+    function win() {
+        console.log("Winner");
+        positionQuestion++;
+        showquestion(positionQuestion);
+        var textEl = document.getElementById('text');
+        textEl.textContent = "RIGHT ANSWER";
         
 
     }
 
-    //BUTTON ANSWER 1
 
-     
-   
-
-
-   
-    
-        
-    // //BUTTON ANSWER 2
-
-
-    // answerbutton2 = document.createElement('button');
-    // answerbutton2.textContent = respuestas[1].answer;
-    // answer2El.appendChild(answerbutton2);
-
-    
-
-    
-    // //BUTTON ANSWER 3
-
-    // answerbutton3 = document.createElement('button');
-    // answerbutton3.textContent = respuestas[2].answer;
-    // answer3El.appendChild(answerbutton3);
-
-   
-
-    
-    // //BUTTON ANSWER 4
-
-    // answerbutton4 = document.createElement('button');
-    // answerbutton4.textContent = respuestas[3].answer;
-    // answer4El.appendChild(answerbutton4);
-
-
-    
-
-    // // ANSWER BUTTONS LISTENERS 
-
-    // answer1El.addEventListener("click", lose);
-    // answer2El.addEventListener("click", lose);
-    // answer3El.addEventListener("click", lose);
-    // answer4El.addEventListener("click", lose);
-
-    // //BUTTON STYLE 
-    // answerbutton1.classList.add("buttonAns");
-    // answerbutton2.classList.add("buttonAns");
-    // answerbutton3.classList.add("buttonAns");
-    // answerbutton4.classList.add("buttonAns");
-
-
-
-}
+    function loose() {
+        timeLeft = timeLeft - 1000;
+        positionQuestion++;
+        showquestion(positionQuestion);
+        var textEl = document.getElementById('text');
+        textEl.textContent = "WRONG ANSWER";
+    }
 
 
 
 
-  
 
 
-   
 
-function lose() {
-    timeLeft = timeLeft -1000;
-}
 
 
 // QUESTIONS DICTIONARY 
@@ -206,17 +176,6 @@ shuffle(questionLibrary);
 
 
 
-
-
-
-
-
-
-
-
-//asignar mi pregunta
-//crear bottones para la respuesta
-//tratar de iterar las respuestas 
 
 
 

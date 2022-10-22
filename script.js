@@ -4,13 +4,15 @@ var timerButtonEl = document.getElementById("startTimer");
 var questionEl = document.getElementById("question");
 var answersEL = document.getElementById("answers");
 var scoresEl = document.getElementById("score");
-// var answer1El = document.getElementById("answer1");
-// var answer2El = document.getElementById("answer2");
-// var answer3El = document.getElementById("answer3");
-// var answer4El = document.getElementById("answer4");
+ var answer1El = document.getElementById("answer1");
+var answer2El = document.getElementById("answer2");
+var answer3El = document.getElementById("answer3");
+var answer4El = document.getElementById("answer4");
 var answerEl = document.getElementById("answer");
 var positionQuestion = 0;
+var positionAnswer = 0;
 var timeLeft = 10000;
+
 
 
 /*EVENT LISTENER START BUTTON*/
@@ -50,18 +52,67 @@ function countdown(e) {
     showquestion(positionQuestion);
 }
 
+
 function showquestion(position) {
     questionEl.textContent = questionLibrary[position].questionsId;
 
+    var respuestas = questionLibrary[position].answerList;
+    shuffle(respuestas)
 
 
+
+
+
+    
+    //BUTTON ANSWER 1
+
+    answerbutton1 = document.createElement('button');
+    answerbutton1.textContent = (respuestas[0].answer);
+    answer1El.appendChild(answerbutton1);  
+    
+    
+        
+    //BUTTON ANSWER 2
+
+
+    answerbutton2 = document.createElement('button');
+    answerbutton2.textContent = (respuestas[1].answer);
+    answer2El.appendChild(answerbutton2);
+
+    
+
+
+    //BUTTON ANSWER 3
+
+    answerbutton3 = document.createElement('button');
+    answerbutton3.textContent = (respuestas[2].answer);
+    answer3El.appendChild(answerbutton3);
+
+    
+
+
+    //BUTTON ANSWER 4
+
+    answerbutton4 = document.createElement('button');
+    answerbutton4.textContent = (respuestas[3].answer);
+    answer4El.appendChild(answerbutton4);
+
+    // ANSWER BUTTONS LISTENERS 
+
+    answer1El.addEventListener("click", lose);
+    answer2El.addEventListener("click", lose);
+    answer3El.addEventListener("click", lose);
+    answer4El.addEventListener("click", lose);
 
 }
 
-function win(){
-    positionQuestion++;
-    showquestion(positionQuestion);
-}
+
+
+
+
+
+
+   
 
 function lose() {
     timeLeft = timeLeft -1000;
@@ -138,14 +189,14 @@ shuffle(questionLibrary);
 
 
 
-console.log(questionLibrary);
+
 
 //asignar mi pregunta
 //crear bottones para la respuesta
 //tratar de iterar las respuestas 
 
 
-console.log(questionLibrary[0].questionsId);
+
 
 
 // var questionOrder = '';

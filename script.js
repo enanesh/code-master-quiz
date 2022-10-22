@@ -4,6 +4,13 @@ var timerButtonEl = document.getElementById("startTimer");
 var questionEl = document.getElementById("question");
 var answersEL = document.getElementById("answers");
 var scoresEl = document.getElementById("score");
+var answer1El = document.getElementById("answer1");
+var answer2El = document.getElementById("answer2");
+var answer3El = document.getElementById("answer3");
+var answer4El = document.getElementById("answer4");
+var answerEl = document.getElementById("answer");
+
+
 
 /*EVENT LISTENER START BUTTON*/
 
@@ -103,6 +110,9 @@ function shuffle(array) {
 
 shuffle(questionLibrary);
 
+
+
+
 console.log(questionLibrary);
 
 //asignar mi pregunta
@@ -110,8 +120,30 @@ console.log(questionLibrary);
 //tratar de iterar las respuestas 
 
 
+console.log(questionLibrary[0].questionsId);
 
 
+//Creates <h2>question<h2>
+
+questionEl.textContent = JSON.stringify(questionLibrary[0].questionsId);
+
+
+
+/// Creates the answer buttons FIND A WAY TO MAKE THIS AUTOMATIC GENERATED 
+
+
+answerbutton1 = document.createElement('button');
+answerbutton1.textContent = JSON.stringify(questionLibrary[0].answerList[0].answer);
+answer1El.appendChild(answerbutton1);
+
+answerbutton2 = document.createElement('button');
+answerbutton2.textContent = JSON.stringify(questionLibrary[0].answerList[1].answer);
+answer2El.appendChild(answerbutton2);
+
+
+answerbutton3 = document.createElement('button');
+answerbutton3.textContent = JSON.stringify(questionLibrary[0].answerList[2].answer);
+answer3El.appendChild(answerbutton3);
 
 
 

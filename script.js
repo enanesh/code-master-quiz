@@ -5,12 +5,12 @@ var questionEl = document.getElementById("question");
 var scoresEl = document.getElementById("score");
 var submitFormEl = document.getElementById("submitForm");
 var submitTextEl = document.getElementById("fname")
+
+//VARIABLES 
 var positionQuestion = 0;
 var positionAnswer = 0;
-var timeLeft = 10000;
+var timeLeft = 10;
 var wins = 0;
-
-
 var todos = [];
 
 
@@ -37,10 +37,12 @@ function countdown(e) {
             timeLeft--;
         } else {
             // Once `timeLeft` gets to 0, set `timerEl` to an empty string
-            timerEl.textContent = '';
+            timerEl.textContent = 'No more time';
             // Use `clearInterval()` to stop the timer
             clearInterval(timeInterval);
             // Call the `displayMessage()` function
+            changeClass1();
+
 
         }
     }, 1000);
@@ -48,52 +50,60 @@ function countdown(e) {
     showquestion(positionQuestion);
     changeClass()
 
+
 }
 
 // CHANGES THE CLASS STATUS DISPLAY FROM STARTBOX TO QUESTION MODULE
 function changeClass() {
     var startBoxEl = document.getElementById("startBox");
-    startBoxEl.classList.add("hide");
+    startBoxEl.className = "hide";
 
     var setQuestionsEl = document.getElementById("setQuestions");
-    setQuestionsEl.classList.add("active");
+    setQuestionsEl.className = "active";
 
-   
+
 }
 
 
 // CHANGES THE CLASS DISPLAY FROM QUESTION MODULE TO  INITIALS FORM
-function changeclass1() {
+function changeClass1() {
     var setQuestionsEl = document.getElementById("setQuestions");
-    setQuestionsEl.classList.add("hide");
+    setQuestionsEl.className = "hide";
 
     var finalQuizEl = document.getElementById("finalQuiz");
-    finalQuizEl.classList.add("active");
+    finalQuizEl.className = "active";
 
 }
 
 
 // CHANGES THE CLASS DISPLAY FROM INITIALS FORM TO SCORE BOARD 
 
-function changeclass2() {
+function changeClass2() {
+
     var finalQuizEl = document.getElementById("finalQuiz");
-    finalQuizEl.classList.add("hide");
+    finalQuizEl.className = "hide";
 
     var scoreBoardEl = document.getElementById("scoreBoard");
-    scoreBoardEl.classList.add("active");
-
- }
+    scoreBoardEl.className = "active";
 
 
+}
 
 
+
+
+// GENERATES DE QUESTIONS AND ADDS THE BUTTONS 
 
 
 function showquestion(position) {
 
     if (position >= questionLibrary.length) {
-        console.log("perro");
+
+
+        changeClass1()
+
         return;
+
 
     }
 
@@ -103,12 +113,13 @@ function showquestion(position) {
     shuffle(respuestas);
 
 
+
+
     for (var i = 1; i <= respuestas.length; i++) {
         var answersEL = document.getElementById("answer" + i.toString());
 
         var answerButton = document.createElement('button');
         answerButton.textContent = respuestas[i - 1].answer;
-
 
         answersEL.innerHTML = ''; // got this part from stack-overflow,
 
@@ -117,6 +128,7 @@ function showquestion(position) {
         answerButton.classList.add("buttonAns");
 
 
+        //Adds the event listener to the buttons 
 
         var rightAnswer = respuestas[i - 1].correct;
 
@@ -129,11 +141,14 @@ function showquestion(position) {
             answersEL.addEventListener("click", loose);
         }
 
-    }
+    };
 
+    textScore()
 }
 
 
+
+// GETS EXECUTED IF THE ANSWER CLICKED IS TRUE
 function win() {
     var textEl = document.getElementById('text');
     textEl.textContent = "RIGHT ANSWER";
@@ -143,8 +158,11 @@ function win() {
     showquestion(positionQuestion);
 
 
+
 }
 
+
+// GETS EXECUTED IF THE ANSWER CLICKED IS FALSE
 
 function loose() {
     var textEl = document.getElementById('text');
@@ -154,7 +172,53 @@ function loose() {
     showquestion(positionQuestion);
 
 
+
 }
+
+
+
+
+function textScore() {
+
+
+
+    var textscoreEl = document.getElementById("textScore");
+    textscoreEl.textContent = "Your score is " + (wins);
+
+    ;
+
+
+    submitFormEl.addEventListener("submit", function (event) {
+        // since it is a form, we want to prevent the default handler
+        // from trying to submit to a non-existent server side script
+        // We want to handle the form submission right here
+        event.preventDefault();
+
+        // prepare data for storage
+        var todoText = submitTextEl.value.trim();
+
+
+
+        // Return from function early if submitted todoText is blank
+        if (todoText === "") {
+            return;
+        }
+
+
+        // UPDATE STATE
+        // Add new todoText to todos array, clear the input
+        todos.push(todoText);
+
+        // Store updated todos in localStorage, re-render the list
+        storeTodos(todoText);
+
+
+
+
+
+
+    })
+};
 
 
 
@@ -167,55 +231,27 @@ function Highscores() {
 }
 
 
-function textScore(){
-
-    var textscoreEl = document.getElementById("textScore");
-    textscoreEl.textContent = "Your score is " + wins;
-
-}
 
 
 
 
-
-
-
-submitFormEl.addEventListener("submit", function (event) {
-    // since it is a form, we want to prevent the default handler
-    // from trying to submit to a non-existent server side script
-    // We want to handle the form submission right here
-    event.preventDefault();
-
-    // prepare data for storage
-    var todoText = submitTextEl.value.trim();
-
-    // Return from function early if submitted todoText is blank
-    if (todoText === "") {
-        return;
-    }
-
-
-    // UPDATE STATE
-    // Add new todoText to todos array, clear the input
-    todos.push(todoText);
-
-    // Store updated todos in localStorage, re-render the list
-    storeTodos(todoText);
-
-});
-
-
+//STORES THE FORM USER INPUT IN LOCALSTORAGE 
 
 function storeTodos(toadd) {
+
+
     // Stringify and set key in localStorage to todos array
     var item = JSON.parse(localStorage.getItem("todos"));
     if (item == null) {
         item = [toadd]
     }
     else { item.push(toadd); }
-    
+
     localStorage.setItem("todos", JSON.stringify(item));
+
+
 }
+
 
 
 
@@ -289,13 +325,6 @@ shuffle(questionLibrary);
 
 
 
-
-
-//Present a question
-// if answerwrong  (-) time,next question
-//if answer is right save answer ,next question
-//when timer =0 finish
-//at the end of the game  user iinput initial and show score sorted
 
 
 

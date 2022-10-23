@@ -71,6 +71,9 @@ header {
     display: none;
 }
 
+.active {
+    display: contents;
+}
 
 /* ANSWER FORMAT*/
 

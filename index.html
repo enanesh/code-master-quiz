@@ -1,67 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
     <title>Code quiz</title>
-</head>
+  </head>
+
+  <!--HEADER (HIGHSCORE AND TIMER DISPLAY)-->
+  <header>
+    <div><a href="">High Scores</a></div>
+    <div>Timer: <span id="timer"></span></div>
+  </header>
+
+  <body>
 
 
-<!--HEADER (HIGHSCORE AND TIMER DISPLAY)-->
-    <header>
-        <div><a href="">High Scores</a></div>
-        <div>Time Remaining: <span id="timer"></span></div>
-    </header>
+    <!-- START BOX (INSTRUCTIONS)-->
 
-<body>
+    <div class="quiz">
+      <div id="startBox" class="hide">
+        <h1>Code Master Quiz</h1>
+        <p>Tperopsjadnjhravgbhjrbngvhjrhvgbhjsghjegt</p>
+        <button id="startTimer" class="buttonStart">Start</button>
+      </div>
 
-     <!-- START BOX (INSTRUCTIONS)-->
-    <div class="quiz"  >
-       <div id="startBox" class="hide" >
-       <h1>Code Master Quiz</h1>
-            <p>Tperopsjadnjhravgbhjrbngvhjrhvgbhjsghjegt</p>   
-        </div>   
-    
-     <!--Question modules -->   
+      <!--QUESTION MODULE  -->
 
-     <div id="setQuestions" class="" >
-        <h2 id ="question"> </h2>
+      <div id="setQuestions" class="hide">
+        <h2 id="question"></h2>
         <ol>
-             <li id="answer1" > </li> 
-             <li id="answer2" > </li> 
-             <li id="answer3" > </li> 
-             <li id="answer4" > </li> 
-            
+          <li id="answer1"></li>
+          <li id="answer2"></li>
+          <li id="answer3"></li>
+          <li id="answer4"></li>
         </ol>
 
-        <button id="startTimer" class="buttonStart"  >Start</button>
-
-        <p id="text" > </p>
-      
-
-     </div>   
-
-     <!-- Score board-->
+        <p id="text"></p>
+      </div>
 
 
-     <div id="scoreBoard"  class="hide">
+      <!--INITIALS FORM -->
+
+      <div id="finalQuiz"  class="hide">
+        <h2>All done!</h2>
+        <p id="textScore"></p>
+        <div id="input"></div>
+        <form id="submitForm">
+          <label for="fname">Initials:</label><br />
+          <input type="text" id="fname" value="" /><br /><br />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+
+
+      <!-- SCORE BOARD-->
+
+      <div id="scoreBoard" class="hide">
         <div id="score"></div>
-        <p>
-            wkjrthjgjuht
-        </p>
+        <h2>Highscores</h2>
+        <ul></ul>
 
-
-     </div>
-
-
-
-
+    
+      </div>
     </div>
 
-
-     <script src="./script.js"></script>
-
-</body>
+    <script src="./script.js"></script>
+  </body>
 </html>

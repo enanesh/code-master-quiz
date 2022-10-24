@@ -100,8 +100,9 @@ function showquestion(position) {
     if (position >= questionLibrary.length) {
        
 
-        changeClass1()
-        textScore()
+        changeClass1();
+        textScore();
+        clearInterval(timeInterval);
 
         return;
 
@@ -168,7 +169,7 @@ function win() {
 function loose() {
     var textEl = document.getElementById('text');
     textEl.textContent = "WRONG ANSWER";
-    timeLeft = timeLeft - 10;
+    timeLeft = timeLeft -10;
     positionQuestion++;
     showquestion(positionQuestion);
 
@@ -292,6 +293,54 @@ var questionLibrary = [
         ]
     },
 
+    {
+        questionsId: ' In JavaScript, single line comment begins with ___.',
+        answerList: [
+            { answer: '//', correct: true },
+            { answer: '#', correct: false },
+            { answer: '/*', correct: false },
+            { answer: '$', correct: false },
+        ]
+    },
+
+    {
+        questionsId: 'The const keyword is used to define a ______',
+        answerList: [
+            { answer: 'Constant', correct: true },
+            { answer: 'Function scopes variable', correct: false },
+            { answer: 'Block scoped variable', correct: false },
+            { answer: 'Constant with no initial value', correct: false },
+        ]
+    },
+
+    {
+        questionsId: 'Which is the correct syntax to declare a constant in JavaScript?',
+        answerList: [
+            { answer: 'const constant_name = value;', correct: true },
+            { answer: 'const constant_name;', correct: false },
+            { answer: 'constant_name const;', correct: false },
+            { answer: 'constant_name const = value;', correct: false },
+        ]
+    },
+
+    {
+        questionsId: 'What is the default value of an uninitialized variable?',
+        answerList: [
+            { answer: 'undefined', correct: true },
+            { answer: '0', correct: false },
+            { answer: 'null', correct: false },
+            { answer: 'NaN', correct: false },
+        ]
+    },
+    {
+        questionsId: 'JavaScript objects are written with _____.',
+        answerList: [
+            { answer: 'curly brackets {}', correct: true },
+            { answer: 'round brackets ()', correct: false },
+            { answer: 'double quotes ""', correct: false },
+            { answer: 'square brackets []', correct: false },
+        ]
+    },
 
 
 ];

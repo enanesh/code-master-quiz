@@ -3,7 +3,7 @@ var highscoresEl = document.getElementById("highscores")
 var highscoresArray = JSON.parse(window.localStorage.getItem('scores'));
 
 
-
+//CREATES LI ELEMENTS GENERATE HIGHSCORE BOARD 
 
 function highscores() {
     console.log(highscoresArray);
@@ -15,6 +15,7 @@ function highscores() {
 }
 
 
+//FUNCTION TO CLEAR LOCAL STORAGE
 
 function clearStorage() {
     localStorage.clear()

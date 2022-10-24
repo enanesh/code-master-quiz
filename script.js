@@ -9,7 +9,7 @@ var submitTextEl = document.getElementById("fname")
 //VARIABLES 
 var positionQuestion = 0;
 var positionAnswer = 0;
-var timeLeft = 1000;
+var timeLeft = 60;
 var wins = 0;
 var todos = [];
 
@@ -67,7 +67,6 @@ function changeClass() {
 
 // CHANGES THE CLASS DISPLAY FROM QUESTION MODULE TO  INITIALS FORM
 function changeClass1() {
-    textScore();
     var setQuestionsEl = document.getElementById("setQuestions");
     setQuestionsEl.className = "hide";
 
@@ -99,9 +98,10 @@ function changeClass2() {
 function showquestion(position) {
 
     if (position >= questionLibrary.length) {
-
+       
 
         changeClass1()
+        textScore()
 
         return;
 
@@ -168,7 +168,7 @@ function win() {
 function loose() {
     var textEl = document.getElementById('text');
     textEl.textContent = "WRONG ANSWER";
-    timeLeft = timeLeft - 1000;
+    timeLeft = timeLeft - 10;
     positionQuestion++;
     showquestion(positionQuestion);
 
@@ -182,8 +182,11 @@ function loose() {
 
 function textScore() {
 
+
     var textscoreEl = document.getElementById("textScore");
     textscoreEl.textContent = "Your score is " + (wins);
+
+
 
 }
 
@@ -258,6 +261,39 @@ var questionLibrary = [
         ]
     },
 
+    {
+        questionsId: ' JavaScript code can be written in ____',
+        answerList: [
+            { answer: 'JavaScript file and in HTML document directly', correct: true },
+            { answer: 'JavaScript file (.js file)', correct: false },
+            { answer: 'HTML document directly', correct: false },
+            { answer: 'In style sheets (.css file)', correct: false },
+        ]
+    },
+
+    {
+        questionsId: ' Which symbol is used separate JavaScript statements?',
+        answerList: [
+            { answer: 'Semicolon (;)', correct: true },
+            { answer: 'Comma (,)', correct: false },
+            { answer: 'Colon (:)', correct: false },
+            { answer: 'Hyphen (_)', correct: false },
+        ]
+    },
+
+
+    {
+        questionsId: ' Which symbol is used separate JavaScript statements?',
+        answerList: [
+            { answer: 'Semicolon (;)', correct: true },
+            { answer: 'Comma (,)', correct: false },
+            { answer: 'Colon (:)', correct: false },
+            { answer: 'Hyphen (_)', correct: false },
+        ]
+    },
+
+
+
 ];
 
 
@@ -314,7 +350,9 @@ submitFormEl.addEventListener("submit", function (event) {
     // Store updated todos in localStorage, re-render the list
     storeTodos(todoText);
 
-    window.location.href = "./scores.html";
+    location = "./scores.html";
+
+
 
 });
 

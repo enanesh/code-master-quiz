@@ -235,7 +235,7 @@ var questionLibrary = [
     {//it has  to have brakets so it identifies as an elemnt on the array 
         questionsId: " JavaScript is the programming language of the _____.",
         answerList: [
-            { answer: 'Web CORRECTA', correct: true },
+            { answer: 'Web', correct: true },
             { answer: 'Mobile', correct: false },
             { answer: 'Desktop', correct: false },
             { answer: 'Server', correct: false },
@@ -245,7 +245,7 @@ var questionLibrary = [
     {
         questionsId: '  Which type of JavaScript language is _____?',
         answerList: [
-            { answer: 'Object-oriented CORRECTA', correct: true },
+            { answer: 'Object-oriented ', correct: true },
             { answer: 'Functional programming', correct: false },
             { answer: 'Object-based', correct: false },
             { answer: 'Procedural', correct: false },
@@ -255,7 +255,7 @@ var questionLibrary = [
     {
         questionsId: 'In which HTML element, we put the JavaScript code?',
         answerList: [
-            { answer: '<script>...</script> CORRECTA', correct: true },
+            { answer: '<script>...</script> ', correct: true },
             { answer: '<javascript>...</javascript>', correct: false },
             { answer: '<js>...</js>', correct: false },
             { answer: '<css>...</css>', correct: false },

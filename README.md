@@ -30,7 +30,7 @@ Once you cloned the repo you are ready to make any changes.
 ## Usage
 
 
-![Screenshot](https://github.com/enanesh/password-generator-jvs/blob/main/Images%20/README%20image.png)
+![Screenshot](https://github.com/enanesh/code-quiz-js/blob/main/guides/Screenshot%20.png)
 
 
 

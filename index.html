@@ -10,19 +10,23 @@
 
   <!--HEADER (HIGHSCORE AND TIMER DISPLAY)-->
   <header>
-    <div><a href="">High Scores</a></div>
+    <div><a href="./scores.html">High Scores</a></div>
     <div>Timer: <span id="timer"></span></div>
   </header>
 
   <body>
-
-
     <!-- START BOX (INSTRUCTIONS)-->
 
     <div class="quiz">
       <div id="startBox" class="active">
         <h1>Code Master Quiz</h1>
-        <p>Tperopsjadnjhravgbhjrbngvhjrhvgbhjsghjegt</p>
+        <p>Try to answer the following JavaScript code-related questions within <b>60 seconds.</b></p> 
+        <p></p>   
+            
+        <p><b>RULES:</b> </p>  
+        <p><b>Right answer</b> questions gives you a <b>10 point score.</b></p>
+        <p><b>Wrong answer </b>will penalize your time by <b>10 seconds.</b></p> 
+        
         <button id="startTimer" class="buttonStart">Start</button>
       </div>
 
@@ -40,10 +44,9 @@
         <p id="text"></p>
       </div>
 
-
       <!--INITIALS FORM -->
 
-      <div id="finalQuiz"  class="hide">
+      <div id="finalQuiz" class="hide">
         <h2>All done!</h2>
         <p id="textScore"></p>
         <div id="input"></div>
@@ -54,17 +57,7 @@
         </form>
       </div>
 
-
-      <!-- SCORE BOARD-->
-
-      <div id="scoreBoard" class="hide">
-        <div id="score"></div>
-        <h2>Highscores</h2>
-        <ul></ul>
-
-    
-      </div>
-    </div>
+      
 
     <script src="./script.js"></script>
   </body>

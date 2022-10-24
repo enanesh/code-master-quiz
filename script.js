@@ -9,7 +9,7 @@ var submitTextEl = document.getElementById("fname")
 //VARIABLES 
 var positionQuestion = 0;
 var positionAnswer = 0;
-var timeLeft = 10;
+var timeLeft = 1000;
 var wins = 0;
 var todos = [];
 
@@ -67,6 +67,7 @@ function changeClass() {
 
 // CHANGES THE CLASS DISPLAY FROM QUESTION MODULE TO  INITIALS FORM
 function changeClass1() {
+    textScore();
     var setQuestionsEl = document.getElementById("setQuestions");
     setQuestionsEl.className = "hide";
 
@@ -134,16 +135,15 @@ function showquestion(position) {
 
         if (rightAnswer === true) {
 
-            answersEL.addEventListener("click", win);
+            answerButton.addEventListener("click", win);
 
         } else {
 
-            answersEL.addEventListener("click", loose);
+            answerButton.addEventListener("click", loose);
         }
 
     };
 
-    textScore()
 }
 
 
@@ -156,6 +156,7 @@ function win() {
     localStorage.setItem("score", wins);
     positionQuestion++;
     showquestion(positionQuestion);
+
 
 
 
@@ -173,6 +174,7 @@ function loose() {
 
 
 
+
 }
 
 
@@ -180,45 +182,10 @@ function loose() {
 
 function textScore() {
 
-
-
     var textscoreEl = document.getElementById("textScore");
     textscoreEl.textContent = "Your score is " + (wins);
 
-    ;
-
-
-    submitFormEl.addEventListener("submit", function (event) {
-        // since it is a form, we want to prevent the default handler
-        // from trying to submit to a non-existent server side script
-        // We want to handle the form submission right here
-        event.preventDefault();
-
-        // prepare data for storage
-        var todoText = submitTextEl.value.trim();
-
-
-
-        // Return from function early if submitted todoText is blank
-        if (todoText === "") {
-            return;
-        }
-
-
-        // UPDATE STATE
-        // Add new todoText to todos array, clear the input
-        todos.push(todoText);
-
-        // Store updated todos in localStorage, re-render the list
-        storeTodos(todoText);
-
-
-
-
-
-
-    })
-};
+}
 
 
 
@@ -241,13 +208,16 @@ function storeTodos(toadd) {
 
 
     // Stringify and set key in localStorage to todos array
-    var item = JSON.parse(localStorage.getItem("todos"));
+    // {USUARIO: toadd, SCORE, SCORE}
+    var userScore = { "user": toadd, "score": wins };
+    var item = JSON.parse(localStorage.getItem("scores"));
     if (item == null) {
-        item = [toadd]
+        item = [userScore]
     }
-    else { item.push(toadd); }
+    else { item.push(userScore); }
 
-    localStorage.setItem("todos", JSON.stringify(item));
+    localStorage.setItem("scores", JSON.stringify(item));
+
 
 
 }
@@ -261,7 +231,7 @@ var questionLibrary = [
     {//it has  to have brakets so it identifies as an elemnt on the array 
         questionsId: " JavaScript is the programming language of the _____.",
         answerList: [
-            { answer: 'Web', correct: true },
+            { answer: 'Web CORRECTA', correct: true },
             { answer: 'Mobile', correct: false },
             { answer: 'Desktop', correct: false },
             { answer: 'Server', correct: false },
@@ -271,7 +241,7 @@ var questionLibrary = [
     {
         questionsId: '  Which type of JavaScript language is _____?',
         answerList: [
-            { answer: 'Object-oriented', correct: true },
+            { answer: 'Object-oriented CORRECTA', correct: true },
             { answer: 'Functional programming', correct: false },
             { answer: 'Object-based', correct: false },
             { answer: 'Procedural', correct: false },
@@ -281,7 +251,7 @@ var questionLibrary = [
     {
         questionsId: 'In which HTML element, we put the JavaScript code?',
         answerList: [
-            { answer: '<script>...</script>', correct: true },
+            { answer: '<script>...</script> CORRECTA', correct: true },
             { answer: '<javascript>...</javascript>', correct: false },
             { answer: '<js>...</js>', correct: false },
             { answer: '<css>...</css>', correct: false },
@@ -320,7 +290,33 @@ function shuffle(array) {
 shuffle(questionLibrary);
 
 
+submitFormEl.addEventListener("submit", function (event) {
+    // since it is a form, we want to prevent the default handler
+    // from trying to submit to a non-existent server side script
+    // We want to handle the form submission right here
+    event.preventDefault();
 
+    // prepare data for storage
+    var todoText = submitTextEl.value.trim();
+
+
+
+    // Return from function early if submitted todoText is blank
+    if (todoText === "") {
+        return;
+    }
+
+
+    // UPDATE STATE
+    // Add new todoText to todos array, clear the input
+    todos.push(todoText);
+
+    // Store updated todos in localStorage, re-render the list
+    storeTodos(todoText);
+
+    window.location.href = "./scores.html";
+
+});
 
 
 

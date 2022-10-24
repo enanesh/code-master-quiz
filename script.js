@@ -48,7 +48,8 @@ function countdown(e) {
     }, 1000);
 
     showquestion(positionQuestion);
-    changeClass()
+    changeClass();
+
 
 
 }
@@ -67,6 +68,7 @@ function changeClass() {
 
 // CHANGES THE CLASS DISPLAY FROM QUESTION MODULE TO  INITIALS FORM
 function changeClass1() {
+    textScore();
     var setQuestionsEl = document.getElementById("setQuestions");
     setQuestionsEl.className = "hide";
 
@@ -98,7 +100,7 @@ function changeClass2() {
 function showquestion(position) {
 
     if (position >= questionLibrary.length) {
-       
+
 
         changeClass1();
         textScore();
@@ -169,7 +171,7 @@ function win() {
 function loose() {
     var textEl = document.getElementById('text');
     textEl.textContent = "WRONG ANSWER";
-    timeLeft = timeLeft -10;
+    timeLeft = timeLeft - 10;
     positionQuestion++;
     showquestion(positionQuestion);
 
@@ -183,12 +185,8 @@ function loose() {
 
 function textScore() {
 
-
     var textscoreEl = document.getElementById("textScore");
     textscoreEl.textContent = "Your score is " + (wins);
-
-
-
 }
 
 

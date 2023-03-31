@@ -4,7 +4,7 @@
 
 ## Description
 
-This repo houses the assets used to build the Master Code Quiz! webpage, available at  https://enanesh.github.io/code-quiz-js/
+This repo houses the assets used to build the Master Code Quiz! webpage, available at  https://enanesh.github.io/code-master-quiz/
 
 
 
